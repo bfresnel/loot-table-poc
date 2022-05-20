@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Character 1",
+    "rarity": 1
+  },
+  {
+    "name": "Character 2",
+    "rarity": 2
+  },
+  {
+    "name": "Character 3",
+    "rarity": 3
+  },
+  {
+    "name": "Character 4",
+    "rarity": 4
+  },
+  {
+    "name": "Character 5",
+    "rarity": 5
+  }
+]
