@@ -6,7 +6,6 @@ import fr.bfr.api.DataApi;
 import fr.bfr.model.Character;
 import fr.bfr.model.DropChance;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,14 +15,19 @@ public class DataService implements DataApi {
 
     @Override
     public List<Character> loadCharacters() throws IOException {
-        return mapper.readValue(new File("src/main/resources/characters.json"),
+
+        return mapper.readValue(this.getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("characters.json"),
                 new TypeReference<List<Character>>() {
                 });
     }
 
     @Override
     public List<DropChance> loadDropChance() throws IOException {
-        return mapper.readValue(new File("src/main/resources/drop-chance.json"),
+        return mapper.readValue(this.getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("drop-chance.json"),
                 new TypeReference<List<DropChance>>() {
                 });
     }

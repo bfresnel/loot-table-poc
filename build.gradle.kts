@@ -1,10 +1,11 @@
 plugins {
     id("java")
     id("application")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "fr.bfr"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -32,7 +33,10 @@ tasks.getByName<Test>("test") {
 tasks.jar {
     manifest {
         attributes(
-            "Main-class" to "fr.bfr.Main"
+            "Main-class" to "fr.bfr.Main",
+            "Class-Path" to configurations.runtimeClasspath.get()
+                .filter { it.isFile }
+                .joinToString(" ") { it.name }
         )
     }
 }
