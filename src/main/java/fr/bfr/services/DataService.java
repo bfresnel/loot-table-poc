@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.bfr.api.DataApi;
 import fr.bfr.model.Character;
 import fr.bfr.model.DropChance;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
+@Service
 public class DataService implements DataApi {
 
     private final ObjectMapper mapper = new ObjectMapper();
