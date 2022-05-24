@@ -3,13 +3,15 @@ package fr.bfr.services;
 import fr.bfr.api.LootApi;
 import fr.bfr.model.Character;
 import fr.bfr.model.DropChance;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Service
 public class LootService implements LootApi {
-    
+
     @Override
     public List<Character> pull(List<Character> data, List<DropChance> dropChances, Integer numberOfPull) {
         List<Character> pulledCharacters = new ArrayList<>();
