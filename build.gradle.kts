@@ -1,18 +1,21 @@
 plugins {
     id("java")
-    id("application")
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("org.springframework.boot") version "2.7.0"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
 group = "fr.bfr"
-version = "1.0.0"
+version = "2.0.0-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_16
+
+configurations {
+    compileOnly {
+        extendsFrom(configurations.annotationProcessor.get())
+    }
+}
 
 repositories {
     mavenCentral()
-}
-
-application {
-    mainClass.set("fr.bfr.Main")
 }
 
 dependencies {
@@ -24,6 +27,11 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
     testCompileOnly("org.projectlombok:lombok:1.18.24")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.getByName<Test>("test") {
@@ -39,10 +47,4 @@ tasks.jar {
                 .joinToString(" ") { it.name }
         )
     }
-}
-
-tasks.shadowJar {
-    archiveBaseName.set(rootProject.name)
-    archiveVersion.set(project.version.toString())
-    archiveClassifier.set("")
 }
