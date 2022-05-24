@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "fr.bfr"
-version = "0.0.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -39,4 +39,10 @@ tasks.jar {
                 .joinToString(" ") { it.name }
         )
     }
+}
+
+tasks.shadowJar {
+    archiveBaseName.set(rootProject.name)
+    archiveVersion.set(project.version.toString())
+    archiveClassifier.set("")
 }
