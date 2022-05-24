@@ -1,6 +1,7 @@
 # 🎰 LOOT-TABLE 🎰
 
-___
+[![Java CI with Gradle](https://github.com/bfresnel/loot-table-poc/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/bfresnel/loot-table-poc/actions/workflows/gradle.yml)
+[![CodeQL](https://github.com/bfresnel/loot-table-poc/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/bfresnel/loot-table-poc/actions/workflows/codeql-analysis.yml)
 
 ## Description
 
