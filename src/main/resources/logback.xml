@@ -1,6 +1,6 @@
 <configuration>
 
-    <timestamp key="bySecond" datePattern="yyyy-MM-dd"/>
+    <timestamp key="actualDate" datePattern="yyyy-MM-dd"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -9,7 +9,7 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>logs/testFile-${bySecond}.log</file>
+        <file>logs/error-${actualDate}.log</file>
         <append>true</append>
         <!-- set immediateFlush to false for much higher logging throughput -->
         <immediateFlush>true</immediateFlush>
@@ -20,8 +20,11 @@
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <logger name="fr.bfr" level="ERROR">
         <appender-ref ref="FILE"/>
+    </logger>
+
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
