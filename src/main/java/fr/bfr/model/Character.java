@@ -2,13 +2,21 @@ package fr.bfr.model;
 
 import lombok.*;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Entity
+@Table(name = "t_character")
 public class Character implements Comparable<Character> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private Integer rarity;
 
