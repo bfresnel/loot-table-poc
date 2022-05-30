@@ -27,6 +27,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.11")
     implementation("org.liquibase:liquibase-core")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     testCompileOnly("org.projectlombok:lombok:1.18.24")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
