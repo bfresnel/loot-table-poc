@@ -7,7 +7,7 @@
         "changes": [
           {
             "sqlFile": {
-              "path": "classpath:/db/scripts/init-data.sql"
+              "path": "classpath:/db/scripts/init-data-test.sql"
             }
           }
         ]
