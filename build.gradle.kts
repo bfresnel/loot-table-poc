@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "fr.bfr"
-version = "2.0.0-SNAPSHOT"
+version = "2.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_16
 
 
@@ -43,6 +43,10 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = false
 }
 
 tasks.jar {
