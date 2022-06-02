@@ -1,0 +1,30 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "init-database",
+        "author": "bfresnel",
+        "changes": [
+          {
+            "sqlFile": {
+              "path": "classpath:/db/scripts/init-database.sql"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "insert-data",
+        "author": "bfresnel",
+        "changes": [
+          {
+            "sqlFile": {
+              "path": "classpath:/db/scripts/init-data.sql"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
