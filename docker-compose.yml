@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    restart: "no"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+    networks:
+      - loot-table-network
+
+  webapp:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - loot-table-network
+
+networks:
+  loot-table-network:
