@@ -21,13 +21,21 @@ import java.util.List;
 public class LootController {
 
     private static final Logger logger = LoggerFactory.getLogger(LootController.class);
-    @Autowired
+
     private CharacterRepository characterRepository;
-    @Autowired
+
     private DropRepository dropRepository;
-    @Autowired
+
     private LootService lootService;
     
+    @Autowired
+    public LootController(CharacterRepository characterRepository, DropRepository dropRepository,
+                          LootService lootService) {
+        this.characterRepository = characterRepository;
+        this.dropRepository = dropRepository;
+        this.lootService = lootService;
+    }
+
     @GetMapping(value = "/pull", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Character>> pull() {
         logger.info("/pull endpoint was called !");
