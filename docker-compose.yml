@@ -16,6 +16,8 @@ services:
       - "8080:8080"
     networks:
       - loot-table-network
+    depends_on:
+      - db
 
 networks:
   loot-table-network:
