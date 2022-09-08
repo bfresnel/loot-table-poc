@@ -5,14 +5,14 @@ import fr.bfr.model.Character;
 import fr.bfr.model.DropChance;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class LootService implements LootApi {
 
-    private final Random random = new Random();
+    private final SecureRandom secureRandom = new SecureRandom();
 
     @Override
     public List<Character> pull(List<Character> data, List<DropChance> dropChances, Integer numberOfPull) {
@@ -30,7 +30,7 @@ public class LootService implements LootApi {
         }
 
         while (counter < numberOfPull) {
-            pulledCharacters.add(charactersListWithDropChance.get(random.nextInt(100)));
+            pulledCharacters.add(charactersListWithDropChance.get(secureRandom.nextInt(100)));
             counter += 1;
         }
 
