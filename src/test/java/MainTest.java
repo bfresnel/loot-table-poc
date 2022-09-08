@@ -7,9 +7,10 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(classes = Main.class)
 @Profile("test")
 @ActiveProfiles("test")
-public class MainTest {
+class MainTest {
 
     @Test
     void loadContext() {
+        //Needed for startup test
     }
 }
