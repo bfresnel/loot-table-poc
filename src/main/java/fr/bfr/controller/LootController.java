@@ -27,7 +27,7 @@ public class LootController {
     private DropRepository dropRepository;
 
     private LootService lootService;
-    
+
     @Autowired
     public LootController(CharacterRepository characterRepository, DropRepository dropRepository,
                           LootService lootService) {
@@ -43,7 +43,7 @@ public class LootController {
         List<DropChance> dropChances = dropRepository.findAll();
         List<Character> lootedCharacters = new ArrayList<>();
 
-        if (characters.size() > 0 && dropChances.size() > 0) {
+        if (!characters.isEmpty() && !dropChances.isEmpty()) {
             logger.info("Retrieving all looted characters...");
             lootedCharacters = lootService.pull(characters, dropChances, 10);
             logger.info("Characters looted successfully !");
