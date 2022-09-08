@@ -12,11 +12,12 @@ import java.util.Random;
 @Service
 public class LootService implements LootApi {
 
+    private final Random random = new Random();
+
     @Override
     public List<Character> pull(List<Character> data, List<DropChance> dropChances, Integer numberOfPull) {
         List<Character> pulledCharacters = new ArrayList<>();
         List<Character> charactersListWithDropChance = new ArrayList<>();
-        Random random = new Random();
         int counter = 0;
 
         // Setting an array of 100 characters with number of each character matching the chance
