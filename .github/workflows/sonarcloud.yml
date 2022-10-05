@@ -1,14 +1,13 @@
 name: Sonarcloud
 on:
   push:
-    branches:
-      - main
+    branches: [ main, develop ]
   pull_request:
     types: [ opened, synchronize, reopened ]
-    branches: [ main ]
+    branches: [ main, develop ]
 jobs:
   build:
-    name: Computing analysis
+    name: SonarCloud analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
