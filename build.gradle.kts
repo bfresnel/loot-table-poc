@@ -3,12 +3,12 @@ plugins {
     id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.sonarqube") version "3.4.0.2513"
+    kotlin("jvm") version "1.7.20"
 }
 
 group = "fr.bfr"
 version = "2.1.1"
 java.sourceCompatibility = JavaVersion.VERSION_16
-
 
 configurations {
     compileOnly {
