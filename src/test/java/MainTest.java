@@ -1,4 +1,4 @@
-import fr.bfr.Main;
+import fr.bfr.fr.bfr.Main;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
