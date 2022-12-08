@@ -7,6 +7,7 @@ plugins {
     id("org.sonarqube") version "3.4.0.2513"
     kotlin("jvm") version "1.7.20"
     kotlin("plugin.spring") version "1.7.20"
+    kotlin("plugin.jpa") version "1.7.20"
 }
 
 group = "fr.bfr"
@@ -38,6 +39,8 @@ dependencies {
     implementation("org.liquibase:liquibase-core")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     
     testCompileOnly("org.projectlombok:lombok:1.18.24")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
