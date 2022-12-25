@@ -3,7 +3,7 @@ package fr.bfr.services;
 import fr.bfr.api.LootApi;
 import fr.bfr.model.Character;
 import fr.bfr.model.DropChance;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -15,9 +15,10 @@ public class LootService implements LootApi {
 
     private final SecureRandom secureRandom = new SecureRandom();
 
-    @Nullable
+    @NotNull
     @Override
-    public List<Character> pull(@Nullable List<? extends Character> data, @Nullable List<? extends DropChance> dropChances, @Nullable Integer numberOfPull) {
+    public List<Character> pull(@NotNull List<? extends Character> data, @NotNull List<DropChance> dropChances,
+                                int numberOfPull) {
         List<Character> pulledCharacters = new ArrayList<>();
         List<Character> charactersListWithDropChance = new ArrayList<>();
         int counter = 0;
