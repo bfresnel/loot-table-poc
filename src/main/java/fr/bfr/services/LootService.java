@@ -17,7 +17,7 @@ public class LootService implements LootApi {
 
     @NotNull
     @Override
-    public List<Character> pull(@NotNull List<? extends Character> data, @NotNull List<DropChance> dropChances,
+    public List<Character> pull(@NotNull List<Character> data, @NotNull List<DropChance> dropChances,
                                 int numberOfPull) {
         List<Character> pulledCharacters = new ArrayList<>();
         List<Character> charactersListWithDropChance = new ArrayList<>();
@@ -38,7 +38,6 @@ public class LootService implements LootApi {
         }
 
         return pulledCharacters.stream()
-                .sorted()
                 .toList();
     }
 }

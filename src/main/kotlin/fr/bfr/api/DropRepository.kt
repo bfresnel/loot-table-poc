@@ -6,7 +6,7 @@ import org.springframework.lang.NonNull
 import org.springframework.stereotype.Service
 
 @Service
-interface DropRepository : JpaRepository<DropChance?, Int?> {
+interface DropRepository : JpaRepository<DropChance, Int> {
     @NonNull
     override fun findAll(): List<DropChance>
 }
