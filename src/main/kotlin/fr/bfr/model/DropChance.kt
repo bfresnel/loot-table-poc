@@ -6,8 +6,8 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "t_drop")
-class DropChance {
+class DropChance(
     @Id
-    val rarity: Int? = null
-    val chance: Double? = null
-}
+    var rarity: Int,
+    var chance: Double
+)
