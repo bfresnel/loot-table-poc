@@ -1,7 +1,7 @@
 package fr.bfr.controller
 
 import fr.bfr.api.CharacterRepository
-import fr.bfr.api.DropRepository
+import fr.bfr.api.DropChanceRepository
 import fr.bfr.model.Character
 import fr.bfr.services.LootService
 import org.slf4j.LoggerFactory
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class LootController @Autowired constructor(
     val characterRepository: CharacterRepository,
-    val dropRepository: DropRepository,
+    val dropRepository: DropChanceRepository,
     val lootService: LootService
 ) {
     @GetMapping(value = ["/pull"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun pull(): ResponseEntity<List<Character?>> {
+    fun pull(): ResponseEntity<List<Character>> {
         logger.info("/pull endpoint was called !")
         val characters = characterRepository.findAll()
         val dropChances = dropRepository.findAll()
-        var lootedCharacters: List<Character?> = ArrayList()
+        var lootedCharacters: List<Character> = ArrayList()
         if (characters.isNotEmpty() && dropChances.isNotEmpty()) {
             logger.info("Retrieving all looted characters...")
             lootedCharacters = lootService.pull(characters, dropChances, 10)
