@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service
 
 @Service
 interface CharacterRepository : JpaRepository<Character, Long> {
-    override fun findAll(): List<Character?>
+    override fun findAll(): List<Character>
 }
