@@ -1,26 +1,31 @@
 package controller
 
-import fr.bfr.Main
+import fr.bfr.controller.LootController
 import fr.bfr.model.Character
-import org.assertj.core.api.Assertions
+import fr.bfr.services.LootService
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.boot.test.web.client.getForEntity
+import org.mockito.kotlin.any
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
-import org.springframework.test.context.ActiveProfiles
+import org.springframework.http.ResponseEntity
 
-@SpringBootTest(classes = [Main::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
-class LootControllerTest(
-    @Autowired val restTemplate: TestRestTemplate
-) {
+class LootControllerTest {
 
     @Test
-    fun `Integration test of the Pull endpoint`() {
-        val entity = restTemplate.getForEntity<List<Character>>("/pull")
-        Assertions.assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
-        Assertions.assertThat(entity.body).isEqualTo(emptyList<Character>())
+    fun `Check if pull endpoint is sending correct data`() {
+        // Mocking
+        val mockLootService: LootService = mock()
+        whenever(mockLootService.pull(any())).thenReturn(listOf(Character(1, "bfr", 1)))
+        val lootController = LootController(mockLootService)
+
+        // Using the method to test
+        val result: ResponseEntity<List<Character>> = lootController.pull()
+
+        // Assertions
+        Assertions.assertEquals(HttpStatus.OK, result.statusCode)
+        result.body?.let { Assertions.assertEquals(1, it.size) }
+        Assertions.assertEquals(true, result.body?.isNotEmpty() ?: false)
     }
 }

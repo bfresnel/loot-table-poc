@@ -9,5 +9,5 @@ import javax.persistence.Table
 class DropChance(
     @Id
     var rarity: Int,
-    var chance: Double
+    var chance: Int,
 )
