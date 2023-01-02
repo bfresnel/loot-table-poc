@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "fr.bfr"
-version = "2.1.1"
+version = "3.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_16
 
 
@@ -22,17 +22,13 @@ configurations {
     }
 }
 
-sourceSets.main {
-    java.srcDirs("src/main/kotlin", "src/main/java")
-}
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.24")
     runtimeOnly("org.postgresql:postgresql")
+
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.0")
     implementation("ch.qos.logback:logback-core:1.2.11")
     implementation("org.slf4j:slf4j-api:1.7.36")
@@ -42,44 +38,25 @@ dependencies {
     implementation("org.liquibase:liquibase-core:4.18.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    testCompileOnly("org.projectlombok:lombok:1.18.24")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
     testImplementation("com.h2database:h2:2.1.214")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
-tasks.getByName<Jar>("jar") {
-    enabled = false
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = JavaVersion.VERSION_16.toString()
-    }
-}
-
-tasks.jar {
-    manifest {
-        attributes(
-            "Main-class" to "fr.bfr.Main",
-            "Class-Path" to configurations.runtimeClasspath.get()
-                .filter { it.isFile }
-                .joinToString(" ") { it.name }
-        )
     }
 }
 
