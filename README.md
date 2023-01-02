@@ -1,5 +1,6 @@
 # 🎰 LOOT-TABLE 🎰
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bfresnel_loot-table-poc&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bfresnel_loot-table-poc)
 [![Java CI with Gradle](https://github.com/bfresnel/loot-table-poc/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/bfresnel/loot-table-poc/actions/workflows/gradle.yml)
 [![CodeQL](https://github.com/bfresnel/loot-table-poc/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/bfresnel/loot-table-poc/actions/workflows/codeql-analysis.yml)
 
@@ -8,19 +9,11 @@
 This project was created in order to understand how all looting games are working.
 This project could also be updated or not.
 
-**_It has many flaws, like no-real logging, no database etc etc... it's just a personal project._**
+**_It has many flaws, it's just a personal project._**
 
 ## Principle
 
-We have 2 files that contains data :
-
-* ```characters.json``` : Contains all characters and their rarity
-* ```drop-chance.json``` : Contains all percentage for each rarity
-
-⚠️ _**These files can be edited. However, there is absolutely no percentage control for the ```drop-chance.json```
-file.**_
-
-For each pull, we retrieve 5 lists of 10 characters.
+For each pull, we retrieve a list of 10 characters.
 In each list -> we integrate as much character as their rarity in a 100-sized array.
 
 For example :
@@ -35,10 +28,8 @@ If you liked this, don't forget to add a 🌟 👋
 
 ## How to use it
 
-You have to install the java JDK with version >= 16.0.2
+    $ cd loot-table
+    $ docker-compose up -d .
 
-Go to the folder where the downloaded jar is located then use the following command :
-
-```
-$ java -jar loot-table-1.0.0.jar
-```
+The last command will build everything under docker including the webapp and the database (it includes a Postgresql
+image)
