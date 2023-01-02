@@ -8,7 +8,7 @@ RUN gradle clean build
 # Stage 2 : Build the wanted image
 FROM eclipse-temurin:16-jdk as CREATE_WEBAPP
 ENV APP_HOME=/usr/app
-ENV APP_NAME=loot-table-2.1.1.jar
+ENV APP_NAME=loot-table-3.0.0.jar
 WORKDIR $APP_HOME/
 COPY --from=BUILD_JAR $APP_HOME/build/libs/$APP_NAME .
 ENTRYPOINT exec java -jar $APP_NAME
