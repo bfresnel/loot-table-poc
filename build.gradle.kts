@@ -5,14 +5,14 @@ plugins {
     id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.sonarqube") version "3.5.0.2730"
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "1.7.20"
     kotlin("plugin.spring") version "1.7.20"
     kotlin("plugin.jpa") version "1.7.20"
 }
 
 group = "fr.bfr"
 version = "3.0.0"
-java.sourceCompatibility = JavaVersion.VERSION_16
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 
 configurations {
@@ -55,7 +55,7 @@ tasks.getByName<Test>("test") {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = JavaVersion.VERSION_16.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
