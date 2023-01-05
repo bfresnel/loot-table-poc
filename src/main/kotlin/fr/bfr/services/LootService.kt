@@ -24,6 +24,7 @@ class LootService @Autowired constructor(
         val pulledCharacters: MutableList<Character> = ArrayList()
         val charactersListWithDropChance: MutableList<Character> = ArrayList()
         var counter = 0
+
         // Setting an array of 100 characters with number of each character matching the chance
         for (dropChance in dropChanceList) {
             while (counter < dropChance.chance) {
@@ -32,11 +33,13 @@ class LootService @Autowired constructor(
             }
             counter = 0
         }
+
+        // After we have the final list, we are taking n character randomly in the list, following
+        // the numberOfPull value
         while (counter < numberOfPull) {
             pulledCharacters.add(charactersListWithDropChance[secureRandom.nextInt(100)])
             counter += 1
         }
-        return pulledCharacters.stream()
-            .toList()
+        return pulledCharacters.sortedWith(compareBy { it.rarity })
     }
 }

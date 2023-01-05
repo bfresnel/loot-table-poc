@@ -17,7 +17,7 @@ class LootControllerTest {
     fun `Check if pull endpoint is sending correct data`() {
         // Mocking
         val mockLootService: LootService = mock()
-        whenever(mockLootService.pull(any())).thenReturn(listOf(Character(1, "bfr", 1)))
+        whenever(mockLootService.pull(any())).thenReturn(listOf(generateFakeCharacter()))
         val lootController = LootController(mockLootService)
 
         // Using the method to test
@@ -25,7 +25,13 @@ class LootControllerTest {
 
         // Assertions
         Assertions.assertEquals(HttpStatus.OK, result.statusCode)
-        result.body?.let { Assertions.assertEquals(1, it.size) }
-        Assertions.assertEquals(true, result.body?.isNotEmpty() ?: false)
+        result.body?.let {
+            Assertions.assertEquals(1, it.size)
+            Assertions.assertEquals(Character(1, "bfr", 1), it[0])
+        }
+    }
+
+    private fun generateFakeCharacter(): Character {
+        return Character(1, "bfr", 1)
     }
 }
