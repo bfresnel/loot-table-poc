@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import fr.bfr.model.Character as CharacterBfr
 
 class LootServiceTest {
 
@@ -24,7 +23,7 @@ class LootServiceTest {
 
         // NumberOfPull
         val numberOfPull = 1
-        val result: List<CharacterBfr> = lootService.pull(numberOfPull)
+        val result: List<Character> = lootService.pull(numberOfPull)
 
         // Assertions
         Assertions.assertEquals(result.size, 1)

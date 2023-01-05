@@ -36,7 +36,6 @@ class LootService @Autowired constructor(
             pulledCharacters.add(charactersListWithDropChance[secureRandom.nextInt(100)])
             counter += 1
         }
-        return pulledCharacters.stream()
-            .toList()
+        return pulledCharacters.sortedWith(compareBy { it.rarity })
     }
 }
